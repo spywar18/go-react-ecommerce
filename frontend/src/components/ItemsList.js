@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { productsAPI, cartAPI, ordersAPI } from '../services/api';
 import Cart from './Cart';
 import OrderHistory from './OrderHistory';
@@ -10,11 +10,7 @@ const ItemsList = ({ user, onLogout }) => {
   const [showOrders, setShowOrders] = useState(false);
   const [notification, setNotification] = useState('');
 
-  useEffect(() => {
-    fetchItems();
-  }, []);
-
-  const fetchItems = async () => {
+  const fetchItems = useCallback(async () => {
     try {
       const response = await productsAPI.getAll();
       setItems(response.data);
@@ -24,7 +20,11 @@ const ItemsList = ({ user, onLogout }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchItems();
+  }, [fetchItems]);
 
   const showNotification = (message, type = 'success') => {
     setNotification({ message, type });

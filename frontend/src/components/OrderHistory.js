@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ordersAPI } from '../services/api';
 
 const OrderHistory = ({ user, onBack, onLogout, notification, showNotification }) => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchOrders();
-  }, []);
-
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     try {
       const response = await ordersAPI.get();
       setOrders(response.data || []);
@@ -19,7 +15,11 @@ const OrderHistory = ({ user, onBack, onLogout, notification, showNotification }
     } finally {
       setLoading(false);
     }
-  };
+  }, [showNotification]);
+
+  useEffect(() => {
+    fetchOrders();
+  }, [fetchOrders]);
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {

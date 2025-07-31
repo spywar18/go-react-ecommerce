@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { cartAPI, ordersAPI } from '../services/api';
 
 const Cart = ({ user, onBack, onCheckout, onLogout, notification, showNotification }) => {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchCart();
-  }, []);
-
-  const fetchCart = async () => {
+  const fetchCart = useCallback(async () => {
     try {
       const response = await cartAPI.get();
       setCart(response.data);
@@ -19,7 +15,11 @@ const Cart = ({ user, onBack, onCheckout, onLogout, notification, showNotificati
     } finally {
       setLoading(false);
     }
-  };
+  }, [showNotification]);
+
+  useEffect(() => {
+    fetchCart();
+  }, [fetchCart]);
 
   const calculateTotal = () => {
     if (!cart || !cart.cart_items) return 0;

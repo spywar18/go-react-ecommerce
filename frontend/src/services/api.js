@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8081';
+// Correctly determine the base URL based on the environment
+const API_BASE_URL = process.env.NODE_ENV === 'production'
+  ? 'https://go-react-ecommerce-production.up.railway.app'
+  : 'http://localhost:8081';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -9,7 +12,7 @@ const api = axios.create({
   },
 });
 
-// Add token to requests
+// Add token to requests (This part is perfect)
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -19,10 +22,10 @@ api.interceptors.request.use((config) => {
 });
 
 export const authAPI = {
-  login: (username, password) => 
+  login: (username, password) =>
     api.post('/users/login', { username, password }),
-  
-  register: (userData) => 
+
+  register: (userData) =>
     api.post('/users', userData),
 };
 
