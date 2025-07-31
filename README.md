@@ -75,14 +75,14 @@ ecommerce-shopping-cart/
 
 3.  Install dependencies:
     ```bash
-    go get [github.com/gin-gonic/gin](https://github.com/gin-gonic/gin)
-    go get [github.com/golang-jwt/jwt/v4](https://github.com/golang-jwt/jwt/v4)
-    go get [github.com/onsi/ginkgo/v2](https://github.com/onsi/ginkgo/v2)
-    go get [github.com/onsi/gomega](https://github.com/onsi/gomega)
+    go get https://github.com/gin-gonic/gin
+    go get https://github.com/golang-jwt/jwt/v4
+    go get https://github.com/onsi/ginkgo/v2
+    go get https://github.com/onsi/gomega
     go get golang.org/x/crypto
     go get gorm.io/driver/sqlite
     go get gorm.io/gorm
-    go get [github.com/gin-contrib/cors](https://github.com/gin-contrib/cors)
+    go get https://github.com/gin-contrib/cors
     ```
 
 4.  Run the server:
@@ -153,15 +153,15 @@ ecommerce-shopping-cart/
     1.  **Create User**: `POST /users`
         ```json
         {
-          "username": "john_doe",
-          "password": "password123"
+          "username": "test124",
+          "password": "hello124"
         }
         ```
     2.  **Login**: `POST /users/login`
         ```json
         {
-          "username": "john_doe",
-          "password": "password123"
+          "username": "test124",
+          "password": "hello124"
         }
         ```
         > Copy the `token` from the response for protected endpoints.
