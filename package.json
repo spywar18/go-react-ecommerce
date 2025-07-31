@@ -1,0 +1,13 @@
+{
+  "name": "go-react-ecommerce",
+  "version": "1.0.0",
+  "description": "E-commerce shopping cart application",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd frontend && npm start"
+  },
+  "keywords": ["ecommerce", "react", "go"],
+  "author": "spywar18",
+  "license": "MIT"
+}

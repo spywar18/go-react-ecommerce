@@ -89,7 +89,7 @@ ecommerce-shopping-cart/
     ```bash
     go run main.go
     ```
-    The backend server will start on `http://localhost:8080`.
+    The backend server will start on `http://localhost:8081`.
 
 ### Frontend Setup
 
@@ -147,7 +147,7 @@ ecommerce-shopping-cart/
 ### API Testing with Postman
 1.  Import the provided Postman collection: `postman/Shopping_Cart_API.postman_collection.json`.
 2.  Set environment variables in Postman:
-    -   `base_url`: `http://localhost:8080`
+    -   `base_url`: `http://localhost:8081`
     -   `token`: (This will be set automatically from the login request in a production setup, or you can set it manually after logging in).
 3.  **Test Flow:**
     1.  **Create User**: `POST /users`
@@ -188,5 +188,29 @@ ecommerce-shopping-cart/
 -   **Database Migration**: The database schema is auto-migrated on server startup.
 -   **Seeded Data**: Default items are created for immediate testing.
 -   **CORS Enabled**: The backend is configured to accept requests from the frontend origin.
+
+---
+
+## Deployment
+
+### Frontend Deployment (Vercel)
+
+The frontend is configured to deploy automatically to Vercel:
+
+1. **Automatic Deployment**: Push to the `main` branch to trigger automatic deployment
+2. **Environment Configuration**: The API automatically switches between:
+   - **Development**: `http://localhost:8081`
+   - **Production**: Your deployed backend URL
+
+### Backend Deployment
+
+Deploy your Go backend to any cloud provider that supports Go applications:
+- Railway
+- Heroku
+- Google Cloud Run
+- AWS Lambda
+- Digital Ocean App Platform
+
+Make sure to update the production API URL in `frontend/src/services/api.js`.
 
 ---    

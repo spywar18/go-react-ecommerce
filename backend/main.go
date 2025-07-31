@@ -45,8 +45,8 @@ func main() {
         protected.GET("/orders", controllers.GetOrders)
     }
 
-    log.Println("Server starting on :8080")
-    r.Run(":8080")
+    log.Println("Server starting on :8081")
+    r.Run(":8081")
 }
 
 func seedItems() {
