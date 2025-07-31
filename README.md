@@ -33,7 +33,7 @@ A full-stack e-commerce shopping cart application built with a Go (Gin + Gorm) b
 ---
 
 ## Project Structure
-'''
+```
 ecommerce-shopping-cart/
 ├── backend/
 │   ├── main.go
@@ -50,7 +50,7 @@ ecommerce-shopping-cart/
 │       └── services/
 └── postman/
     └── Shopping_Cart_API.postman_collection.json
-'''
+```
 
 
 ## Installation & Setup
