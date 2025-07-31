@@ -137,7 +137,7 @@ ecommerce-shopping-cart/
 ### Backend Tests
 1.  Install Ginkgo:
     ```bash
-    go install [github.com/onsi/ginkgo/v2/ginkgo](https://github.com/onsi/ginkgo/v2/ginkgo)
+    go install https://github.com/onsi/ginkgo/v2/ginkgo
     ```
 2.  Run tests:
     ```bash
