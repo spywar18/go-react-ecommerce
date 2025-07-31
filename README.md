@@ -137,7 +137,7 @@ ecommerce-shopping-cart/
 ### Backend Tests
 1.  Install Ginkgo:
     ```bash
-    go install [github.com/onsi/ginkgo/v2/ginkgo](https://github.com/onsi/ginkgo/v2/ginkgo)
+    go install https://github.com/onsi/ginkgo/v2/ginkgo
     ```
 2.  Run tests:
     ```bash
@@ -147,7 +147,7 @@ ecommerce-shopping-cart/
 ### API Testing with Postman
 1.  Import the provided Postman collection: `postman/Shopping_Cart_API.postman_collection.json`.
 2.  Set environment variables in Postman:
-    -   `base_url`: `http://localhost:8080`
+    -   `base_url`: `http://localhost:8081`
     -   `token`: (This will be set automatically from the login request in a production setup, or you can set it manually after logging in).
 3.  **Test Flow:**
     1.  **Create User**: `POST /users`
