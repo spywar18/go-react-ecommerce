@@ -1,0 +1,55 @@
+# Root .gitignore for E-commerce Shopping Cart Project
+
+# Frontend (React/Node.js)
+frontend/node_modules/
+frontend/build/
+frontend/.env*
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Backend (Go)
+backend/*.exe
+backend/*.dll
+backend/*.so
+backend/*.dylib
+backend/*.test
+backend/*.out
+backend/*.db
+backend/*.sqlite*
+backend/*.log
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+
+# Temporary files and directories
+tmp/
+temp/
+.cache/
+
+# Package manager files
+package-lock.json
+yarn.lock
