@@ -6,6 +6,7 @@ import (
     "ecommerce-shopping-cart/middleware"
     "ecommerce-shopping-cart/models"
     "log"
+    "os"
 
     "github.com/gin-contrib/cors"
     "github.com/gin-gonic/gin"
@@ -39,8 +40,13 @@ func main() {
         protected.GET("/orders", controllers.GetOrders)
     }
 
-    log.Println("Server starting on :8081")
-    r.Run(":8081")
+    port := os.Getenv("PORT")
+    if port == "" {
+        port = "8081"
+    }
+
+    log.Println("Server starting on port", port)
+    r.Run(":" + port)
 }
 
 func seedItems() {
