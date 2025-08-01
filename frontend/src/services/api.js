@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_BASE_URL = process.env.NODE_ENV === 'production'
-  ? 'https://go-react-ecommerce-production.up.railway.app'
+  ? 'https://your-app-name.onrender.com'
   : 'http://localhost:8081';
 
 const api = axios.create({
