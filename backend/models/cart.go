@@ -20,6 +20,8 @@ type CartItem struct {
     ID     uint `json:"id" gorm:"primaryKey"`
     CartID uint `json:"cart_id" gorm:"not null"`
     ItemID uint `json:"item_id" gorm:"not null"`
+
+
     
     Cart Cart `json:"cart,omitempty"`
     Item Item `json:"item,omitempty"`
