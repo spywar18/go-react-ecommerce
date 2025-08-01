@@ -7,14 +7,11 @@ import './App.css';
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [authMode, setAuthMode] = useState('login'); // 'login' or 'signup'
+  const [authMode, setAuthMode] = useState('login');
 
   useEffect(() => {
-    // Check if user is already logged in
     const token = localStorage.getItem('token');
     if (token) {
-      // In a real app, you'd validate the token with the backend
-      // For now, we'll just set a dummy user
       setUser({ username: 'User' });
     }
     setLoading(false);

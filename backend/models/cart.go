@@ -12,7 +12,6 @@ type Cart struct {
     UpdatedAt time.Time      `json:"updated_at"`
     DeletedAt gorm.DeletedAt `json:"-" gorm:"index"`
     
-    // Relationships
     User      User       `json:"user,omitempty"`
     CartItems []CartItem `json:"cart_items,omitempty"`
 }
@@ -22,7 +21,6 @@ type CartItem struct {
     CartID uint `json:"cart_id" gorm:"not null"`
     ItemID uint `json:"item_id" gorm:"not null"`
     
-    // Relationships
     Cart Cart `json:"cart,omitempty"`
     Item Item `json:"item,omitempty"`
 }

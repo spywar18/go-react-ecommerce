@@ -34,7 +34,7 @@ const ItemsList = ({ user, onLogout }) => {
   const addToCart = async (itemId) => {
     try {
       await cartAPI.add({ item_id: itemId });
-      showNotification('Item added to cart successfully!');
+      showNotification('Item added to cart!');
     } catch (error) {
       const errorMessage = error.response?.data?.error || 'Error adding item to cart';
       showNotification(errorMessage, 'error');
@@ -44,19 +44,19 @@ const ItemsList = ({ user, onLogout }) => {
   const handleCheckout = async () => {
     try {
       await ordersAPI.create();
-      showNotification('Order placed successfully!');
+      showNotification('Order placed!');
       setShowCart(false);
     } catch (error) {
-      const errorMessage = error.response?.data?.error || 'Error creating order. Make sure you have items in your cart.';
+      const errorMessage = error.response?.data?.error || 'Error creating order. Make sure you have items in cart.';
       showNotification(errorMessage, 'error');
     }
   };
 
-  if (loading) {
+      if (loading) {
     return (
       <div className="items-loading">
         <div className="loading-spinner"></div>
-        <p>Loading amazing products...</p>
+        <p>Loading products...</p>
       </div>
     );
   }
@@ -130,8 +130,8 @@ const ItemsList = ({ user, onLogout }) => {
       {/* Main Content */}
       <div className="items-container">
         <div className="items-header">
-          <h1>🛍️ Our Amazing Products</h1>
-          <p>Discover our carefully curated collection of premium items</p>
+          <h1>🛍️ Products</h1>
+          <p>Browse our collection</p>
         </div>
 
         <div className="items-grid">
@@ -155,7 +155,7 @@ const ItemsList = ({ user, onLogout }) => {
         {items.length === 0 && (
           <div className="empty-state">
             <h3>No items available</h3>
-            <p>Check back later for new products!</p>
+            <p>No products available right now!</p>
           </div>
         )}
       </div>

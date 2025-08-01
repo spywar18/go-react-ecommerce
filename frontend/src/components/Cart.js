@@ -34,8 +34,7 @@ const Cart = ({ user, onBack, onCheckout, onLogout, notification, showNotificati
 
     try {
       await ordersAPI.create();
-      showNotification('Order placed successfully!');
-      // Refresh cart after successful order
+      showNotification('Order placed!');
       setTimeout(() => {
         onBack();
       }, 1000);
@@ -102,8 +101,8 @@ const Cart = ({ user, onBack, onCheckout, onLogout, notification, showNotificati
       {/* Cart Content */}
       <div className="items-container">
         <div className="items-header">
-          <h1>🛍️ Your Shopping Cart</h1>
-          <p>Review your selected items</p>
+          <h1>🛍️ Shopping Cart</h1>
+          <p>Review your items</p>
         </div>
 
         {cart && cart.cart_items && cart.cart_items.length > 0 ? (
@@ -151,7 +150,7 @@ const Cart = ({ user, onBack, onCheckout, onLogout, notification, showNotificati
           <div className="empty-cart">
             <div className="empty-cart-icon">🛒</div>
             <h3>Your cart is empty</h3>
-            <p>Add some amazing products to get started!</p>
+            <p>Add some products to get started!</p>
             <button onClick={onBack} className="btn btn-primary">
               Continue Shopping
             </button>

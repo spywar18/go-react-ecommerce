@@ -1,6 +1,5 @@
-# Root .gitignore for E-commerce Shopping Cart Project
 
-# Frontend (React/Node.js)
+# Frontend
 frontend/node_modules/
 frontend/build/
 frontend/.env*
@@ -8,7 +7,7 @@ frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
 
-# Backend (Go)
+# Backend 
 backend/*.exe
 backend/*.dll
 backend/*.so
@@ -19,7 +18,7 @@ backend/*.db
 backend/*.sqlite*
 backend/*.log
 
-# IDE and Editor files
+# IDE
 .vscode/
 .idea/
 *.swp

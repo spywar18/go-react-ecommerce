@@ -12,30 +12,24 @@ import (
 )
 
 func main() {
-    // Initialize database
     database.Connect()
     database.DB.AutoMigrate(&models.User{}, &models.Item{}, &models.Cart{}, &models.Order{}, &models.CartItem{})
 
-    // Seed some items for testing
     seedItems()
 
-    // Initialize Gin router
     r := gin.Default()
 
-    // Configure CORS
     config := cors.DefaultConfig()
     config.AllowAllOrigins = true
     config.AllowHeaders = []string{"Origin", "Content-Length", "Content-Type", "Authorization"}
     r.Use(cors.New(config))
 
-    // Public routes
     r.POST("/users", controllers.CreateUser)
     r.GET("/users", controllers.GetUsers)
     r.POST("/users/login", controllers.LoginUser)
     r.POST("/items", controllers.CreateItem)
     r.GET("/items", controllers.GetItems)
 
-    // Protected routes
     protected := r.Group("/")
     protected.Use(middleware.AuthRequired())
     {
@@ -63,6 +57,6 @@ func seedItems() {
         for _, item := range items {
             database.DB.Create(&item)
         }
-        log.Println("Seeded initial items")
+        log.Println("Added sample items")
     }
 }

@@ -14,7 +14,6 @@ type Order struct {
     UpdatedAt time.Time      `json:"updated_at"`
     DeletedAt gorm.DeletedAt `json:"-" gorm:"index"`
     
-    // Relationships
     User User `json:"user,omitempty"`
     Cart Cart `json:"cart,omitempty"`
 }

@@ -89,7 +89,7 @@ const OrderHistory = ({ user, onBack, onLogout, notification, showNotification }
       <div className="items-container">
         <div className="items-header">
           <h1>📋 Order History</h1>
-          <p>Track your purchase history</p>
+          <p>Your past orders</p>
         </div>
 
         {orders.length > 0 ? (
@@ -118,7 +118,7 @@ const OrderHistory = ({ user, onBack, onLogout, notification, showNotification }
           <div className="empty-orders">
             <div className="empty-orders-icon">📋</div>
             <h3>No orders yet</h3>
-            <p>Your order history will appear here once you make your first purchase!</p>
+            <p>Your orders will show up here once you make a purchase!</p>
             <button onClick={onBack} className="btn btn-primary">
               Start Shopping
             </button>

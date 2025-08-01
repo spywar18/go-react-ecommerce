@@ -16,7 +16,6 @@ body {
   min-height: 100vh;
 }
 
-/* Login Styles */
 .login-container {
   display: flex;
   justify-content: center;
@@ -96,7 +95,6 @@ button:disabled {
   border: 1px solid #f5c6cb;
 }
 
-/* Items List Styles */
 .items-container {
   max-width: 1200px;
   margin: 0 auto;

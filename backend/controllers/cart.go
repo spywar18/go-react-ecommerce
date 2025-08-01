@@ -20,17 +20,14 @@ func AddToCart(c *gin.Context) {
         return
     }
 
-    // Verify item exists
     var item models.Item
     if err := database.DB.First(&item, requestData.ItemID).Error; err != nil {
         c.JSON(http.StatusNotFound, gin.H{"error": "Item not found"})
         return
     }
 
-    // Find or create cart for user
     var cart models.Cart
     if err := database.DB.Where("user_id = ?", userID).First(&cart).Error; err != nil {
-        // Create new cart
         cart = models.Cart{UserID: userID}
         if err := database.DB.Create(&cart).Error; err != nil {
             c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create cart"})
@@ -38,14 +35,11 @@ func AddToCart(c *gin.Context) {
         }
     }
 
-    // Check if item already exists in cart (optional: prevent duplicates or increment quantity)
     var existingCartItem models.CartItem
     if err := database.DB.Where("cart_id = ? AND item_id = ?", cart.ID, requestData.ItemID).First(&existingCartItem).Error; err == nil {
         c.JSON(http.StatusConflict, gin.H{"error": "Item already in cart"})
         return
     }
-
-    // Add item to cart
     cartItem := models.CartItem{
         CartID: cart.ID,
         ItemID: requestData.ItemID,
@@ -56,7 +50,7 @@ func AddToCart(c *gin.Context) {
         return
     }
 
-    c.JSON(http.StatusCreated, gin.H{"message": "Item added to cart", "cart_item": cartItem})
+    c.JSON(http.StatusCreated, gin.H{"message": "Added to cart", "cart_item": cartItem})
 }
 
 func GetCarts(c *gin.Context) {

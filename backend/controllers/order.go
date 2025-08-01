@@ -11,7 +11,6 @@ import (
 func CreateOrder(c *gin.Context) {
     userID := c.GetUint("user_id")
 
-    // Find user's cart
     var cart models.Cart
     if err := database.DB.Preload("CartItems.Item").Where("user_id = ?", userID).First(&cart).Error; err != nil {
         c.JSON(http.StatusNotFound, gin.H{"error": "Cart not found"})
@@ -23,13 +22,11 @@ func CreateOrder(c *gin.Context) {
         return
     }
 
-    // Calculate total
     var total float64
     for _, cartItem := range cart.CartItems {
         total += cartItem.Item.Price
     }
 
-    // Create order
     order := models.Order{
         UserID: userID,
         CartID: cart.ID,
@@ -41,10 +38,9 @@ func CreateOrder(c *gin.Context) {
         return
     }
 
-    // Clear cart items
     database.DB.Where("cart_id = ?", cart.ID).Delete(&models.CartItem{})
 
-    c.JSON(http.StatusCreated, gin.H{"message": "Order created successfully", "order": order})
+    c.JSON(http.StatusCreated, gin.H{"message": "Order created", "order": order})
 }
 
 func GetOrders(c *gin.Context) {
